@@ -5,12 +5,12 @@ window:
   class:
     instance: Alacritty
     general: Alacritty
-  opacity: 0.65
-  # blur: 1.7
+  opacity: 0.75
+  # opacity: 1
+  # blur: 10.7
   # background_opacity: 2.1
   # window_background_opacity: 2.1
   # decorations: full
-
 
 scrolling:
   history: 10001
@@ -29,11 +29,11 @@ font:
   bold_italic:
     family: JetBrainsMono Nerd Font
     style: Bold Italic
-  size: 15
+  size: 12
 draw_bold_text_with_bright_colors: false
 
 import:
- - ~/.config/alacritty/themes/themes/rose-pine-down.yaml
+  - ~/.config/alacritty/themes/themes/rose-pine-down.yaml
 
 selection:
   save_to_clipboard: true
@@ -43,4 +43,3 @@ shell:
 
 key_bindings:
   - { key: Return, mods: Super|Shift, action: SpawnNewInstance }
-
