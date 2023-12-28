@@ -10,10 +10,6 @@ return {
   {
     "NvChad/nvim-colorizer.lua",
     opts = {
-      filetypes = {
-        "css",
-        "html",
-      },
       user_default_options = {
         tailwind = true,
       },

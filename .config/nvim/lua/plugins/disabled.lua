@@ -11,4 +11,8 @@ return {
     "nvimtools/none-ls.nvim",
     enabled = false,
   },
+  {
+    "rcarriga/nvim-notify",
+    enabled = true,
+  },
 }
