@@ -46,17 +46,17 @@ return {
       -- Change specific vim highlight groups
       -- https://github.com/rose-pine/neovim/wiki/Recipes
       highlight_groups = {
-        ColorColumn = { bg = "rose" },
+        ColorColumn = { bg = "highlight_high", blend = 10 },
 
         -- Blend colours against the "base" background
-        CursorLine = { bg = "foam", blend = 10 },
+        CursorLine = { bg = "highlight_high", blend = 10 },
         StatusLine = { fg = "love", bg = "love", blend = 10 },
 
         -- By default each group adds to the existing config.
         -- If you only want to set what is written in this config exactly,
         -- you can set the inherit option:
 
-        Search = { bg = "gold", inherit = false },
+        Search = { bg = "highlight_med", inherit = false },
         TelescopeBorder = { fg = "highlight_high", bg = "none" },
         TelescopeNormal = { bg = "none" },
         TelescopePromptNormal = { bg = "base" },
