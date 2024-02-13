@@ -1,0 +1,49 @@
+import = ["/home/yadhu/.config/alacritty/themes/themes/iterm.toml"]
+
+[colors]
+draw_bold_text_with_bright_colors = false
+
+[font]
+size = 15
+
+[font.bold]
+family = "JetBrainsMono Nerd Font"
+style = "Bold"
+
+[font.bold_italic]
+family = "JetBrainsMono Nerd Font"
+style = "Bold Italic"
+
+[font.italic]
+family = "JetBrainsMono Nerd Font"
+style = "Italic"
+
+[font.normal]
+family = "JetBrainsMono Nerd Font"
+style = "Regular"
+
+[[keyboard.bindings]]
+action = "SpawnNewInstance"
+key = "Return"
+mods = "Super|Shift"
+
+[scrolling]
+history = 10001
+multiplier = 4
+
+[selection]
+save_to_clipboard = true
+
+[shell]
+program = "/bin/fish"
+
+[window]
+opacity = 0.75
+
+[window.class]
+general = "Alacritty"
+instance = "Alacritty"
+
+[window.padding]
+x = 11
+y = 11
