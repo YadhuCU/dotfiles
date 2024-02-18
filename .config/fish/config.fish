@@ -62,13 +62,15 @@ alias fcd "cd ~/.config/fish"
 alias tt "exa -T --icons --color-scale"
 alias python_env "source ~/Tutorial/DJango/django_env/bin/activate.fish"
 alias cls "clear -x"
+alias vi /usr/bin/vim
 # bind \cl 'clear -x'
 # bind \cl clear -x commandline -f repaint
 
 
 alias 'Ctrl+f' tmux-sessionizer
 
-command -qv nvim && alias n nvim
+
+command -qv nvim && alias vim nvim
 
 set -gx EDITOR nvim
 
