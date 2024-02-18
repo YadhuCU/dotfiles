@@ -28,9 +28,9 @@ vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
 vim.keymap.set("n", "ss", ":split<Return><C-w>w")
 vim.keymap.set("n", "sv", ":vsplit<Return><C-w>w")
 
--- Select all
-vim.keymap.set("n", "<C-a>", "gg<S-v>G")
-
--- Increment/decrement
-vim.keymap.set("n", "+", "<C-a>")
-vim.keymap.set("n", "-", "<C-x>")
+-- -- Select all
+-- vim.keymap.set("n", "<C-a>", "gg<S-v>G")
+--
+-- -- Increment/decrement
+-- vim.keymap.set("n", "+", "<C-a>")
+-- vim.keymap.set("n", "-", "<C-x>")
