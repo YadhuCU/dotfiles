@@ -7,19 +7,19 @@ draw_bold_text_with_bright_colors = false
 size = 15
 
 [font.bold]
-family = "JetBrainsMono Nerd Font"
+family = "DejaVu Sans Mono"
 style = "Bold"
 
 [font.bold_italic]
-family = "JetBrainsMono Nerd Font"
+family = "DejaVu Sans Mono"
 style = "Bold Italic"
 
 [font.italic]
-family = "JetBrainsMono Nerd Font"
+family = "DejaVu Sans Mono"
 style = "Italic"
 
 [font.normal]
-family = "JetBrainsMono Nerd Font"
+family = "DejaVu Sans Mono"
 style = "Regular"
 
 [[keyboard.bindings]]
