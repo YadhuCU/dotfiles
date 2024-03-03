@@ -4,7 +4,7 @@ import = ["/home/yadhu/.config/alacritty/themes/themes/iterm.toml"]
 draw_bold_text_with_bright_colors = false
 
 [font]
-size = 15
+size = 9
 
 [font.bold]
 family = "DejaVu Sans Mono"
@@ -39,11 +39,12 @@ program = "/bin/fish"
 
 [window]
 opacity = 0.75
+decorations = 'none'
 
 [window.class]
 general = "Alacritty"
 instance = "Alacritty"
 
 [window.padding]
-x = 11
-y = 11
+x = 3
+y = 3
