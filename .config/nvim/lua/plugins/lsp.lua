@@ -53,7 +53,7 @@ return {
 
       local opts = { noremap = true, silent = true }
       local on_attach = function(client, bufnr)
-        opts.bufnr = bufnr
+        opts.buffer = bufnr
 
         -- set keybinds
         opts.desc = "Show LSP declarations"
