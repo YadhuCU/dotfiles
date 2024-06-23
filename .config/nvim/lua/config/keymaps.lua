@@ -28,6 +28,10 @@ vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
 vim.keymap.set("n", "ss", ":split<Return><C-w>w")
 vim.keymap.set("n", "sv", ":vsplit<Return><C-w>w")
 
+-- Navigate through quick list
+vim.keymap.set("n", "]a", ":cnext<CR>")
+vim.keymap.set("n", "[a", ":cprevious<CR>")
+
 -- -- Select all
 -- vim.keymap.set("n", "<C-a>", "gg<S-v>G")
 --
