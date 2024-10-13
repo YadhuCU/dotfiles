@@ -21,12 +21,8 @@ return {
           "html",
           "cssls",
           "tailwindcss",
-          "svelte",
           "lua_ls",
-          "graphql",
           "emmet_ls",
-          "prismals",
-          "pyright",
         },
         -- auto install configure servers (with lspconfig)
         automatic_installation = true, -- not the same as ensure_installed
@@ -37,6 +33,9 @@ return {
   -- lsp servers
   {
     "neovim/nvim-lspconfig",
+    opts = {
+      inlay_hints = { enabled = false },
+    },
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
       "hrsh7th/cmp-nvim-lsp",
@@ -101,47 +100,11 @@ return {
         on_attach = on_attach,
       })
 
-      -- configure svelte server
-      lspconfig["svelte"].setup({
-        capabilities = capabilities,
-        on_attach = function(client, bufnr)
-          on_attach(client, bufnr)
-
-          vim.api.nvim_create_autocmd("BufWritePost", {
-            pattern = { "*.js", "*.ts" },
-            callback = function(ctx)
-              if client.name == "svelte" then
-                client.notify("$/onDidChangeTsOrJsFile", { uri = ctx.file })
-              end
-            end,
-          })
-        end,
-      })
-
-      -- configure prisma orm server
-      lspconfig["prismals"].setup({
-        capabilities = capabilities,
-        on_attach = on_attach,
-      })
-
-      -- configure graphql language server
-      lspconfig["graphql"].setup({
-        capabilities = capabilities,
-        on_attach = on_attach,
-        filetypes = { "graphql", "gql", "svelte", "typescriptreact", "javascriptreact" },
-      })
-
       -- configure emmet language server
       lspconfig["emmet_ls"].setup({
         capabilities = capabilities,
         on_attach = on_attach,
-        filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less", "svelte" },
-      })
-
-      -- configure python server
-      lspconfig["pyright"].setup({
-        capabilities = capabilities,
-        on_attach = on_attach,
+        filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss" },
       })
 
       -- configure lua server (with special settings)
