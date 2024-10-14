@@ -3,7 +3,7 @@
 if [[ $# -eq 1 ]]; then
 	selected=$1
 else
-	selected=$(find ~/Tutorial/ ~/Tutorial/Webdevelopment ~/LUMINAR ~/.dotfiles ~/Work -mindepth 1 -maxdepth 2 -type d | fzf)
+	selected=$(find ~/Tutorial/ ~/Tutorial/Webdevelopment ~/LUMINAR ~/dotfiles ~/Work -mindepth 1 -maxdepth 2 -type d | fzf)
 fi
 
 if [[ -z $selected ]]; then
@@ -15,6 +15,11 @@ tmux_running=$(pgrep tmux)
 
 if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
 	tmux new-session -s $selected_name -c $selected
+	exit 0
+fi
+
+if [[ -z $TMUX ]] && [[ -n $tmux_running ]]; then
+	tmux attach-session -t $selected_name
 	exit 0
 fi
 
