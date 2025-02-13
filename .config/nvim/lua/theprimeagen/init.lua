@@ -1,6 +1,7 @@
 require("theprimeagen.set")
 require("theprimeagen.remap")
 require("theprimeagen.lazy_init")
+require("theprimeagen.find_replace")
 
 -- DO.not
 -- DO NOT INCLUDE THIS
@@ -76,46 +77,6 @@ autocmd('LspAttach', {
     vim.keymap.set("n", "[d", function() vim.diagnostic.goto_prev() end, opts)
   end
 })
-
-vim.api.nvim_create_user_command("S", function(opts)
-
-  local input = opts.fargs[1]
-  local parts = vim.split(input, "/", { plain = true })
-
-  if #parts < 2 then
-    print("Usage :[range]S/find/replace/flag")
-    return
-  end
-
-  local find = parts[2]
-  local replace = parts[3]
-  local flag = parts[4] or ""
-  local range
-  local start_line = opts.line1
-  local end_line = opts.line2
-
-  if opts.range == 0 then
-    range = "."
-  else
-    range = string.format("%d,%d", start_line, end_line)
-  end
-
-  find = vim.fn.escape(find, "/")
-
-  local cmd = string.format(
-    [[%s s/\c%s/\=submatch(0)[0] ==# toupper(submatch(0)[0]) ? '%s' : '%s'/%s]],
-    range,
-    find,
-    replace:sub(1,1):upper() .. replace:sub(2),
-    replace:lower(),
-    flag
-  )
-
-  local ns_id = vim.api.nvim_create_namespace("SubstitutionHighlight")
-  print("ns_id",ns_id)
-
-  vim.cmd(cmd)
-end, { nargs = "+", range = true })
 
 
 vim.g.netrw_browse_split = 0
