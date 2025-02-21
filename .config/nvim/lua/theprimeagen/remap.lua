@@ -31,7 +31,7 @@ vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
 -- vim.keymap.set("n", "Q", "<nop>")
 
 -- format
-vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
+-- vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
 
 -- Split window
 vim.keymap.set("n", "ss", ":split<Return><C-w>w")
@@ -56,11 +56,6 @@ vim.keymap.set("n", "]<Space>", "mzo<C-c>`z")
 
 --[[
 -- TODO: change by requirement;
-vim.keymap.set(
-    "n",
-    "<leader>ee",
-    "oif err != nil {<CR>}<Esc>Oreturn err<Esc>"
-)
 vim.keymap.set(
     "n",
     "<leader>ea",

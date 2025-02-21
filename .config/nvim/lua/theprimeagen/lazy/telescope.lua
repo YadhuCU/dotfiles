@@ -25,8 +25,10 @@ return {
     end)
     ]] --
     vim.keymap.set('n', '<leader>/', function()
-      local word = vim.fn.expand("<cword>")
+      --[[local word = vim.fn.expand("<cword>")
       builtin.grep_string({ search = word })
+      --]]
+      builtin.live_grep()
     end)
 
     --[[
@@ -34,10 +36,10 @@ return {
       local word = vim.fn.expand("<cWORD>")
       builtin.grep_string({ search = word })
     end)
-    ]]--
     vim.keymap.set('n', '<leader>ps', function()
       builtin.grep_string({ search = vim.fn.input("Grep > ") })
     end)
+    ]]--
     vim.keymap.set('n', '<leader>vh', builtin.help_tags, {})
   end
 }

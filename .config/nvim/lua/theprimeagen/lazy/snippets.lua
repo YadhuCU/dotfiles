@@ -12,6 +12,8 @@ return {
       local ls = require("luasnip")
       ls.filetype_extend("javascript", { "jsdoc" })
 
+      require("luasnip.loaders.from_lua").load({ paths = "~/.config/nvim/lua/theprimeagen/snippets" })
+
       --- TODO: What is expand?
       vim.keymap.set({ "i" }, "<C-s>e", function() ls.expand() end, { silent = true })
 
