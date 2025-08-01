@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+FILEPATH=/home/mariapps/dotfiles/
+
+if [[ $# -eq 1 ]]; then
+	selected=$1
+else
+ selected=$(find $FILEPATH -type f -name "*doc.md" | fzf)
+fi
+
+if [[ -z $selected ]]; then
+	exit 0
+fi
+
+if [[ $# -eq 1 ]]; then
+	selected_command=$1
+else
+ selected_command=$(awk '
+/^```bash$/ {in_block=1; next}
+/^```$/ {in_block=0; next}
+in_block {print}
+' "$selected" | fzf)
+fi
+
+if [[ -z $selected_command ]]; then
+	exit 0
+fi
+
+printf '%s' "$selected_command"
