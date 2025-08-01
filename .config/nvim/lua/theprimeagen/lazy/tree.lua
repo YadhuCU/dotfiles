@@ -64,8 +64,9 @@ return {
       -- vim.fn.sign_define("DiagnosticSignWarn", { text = " ", texthl = "DiagnosticSignWarn" })
       -- vim.fn.sign_define("DiagnosticSignInfo", { text = " ", texthl = "DiagnosticSignInfo" })
       -- vim.fn.sign_define("DiagnosticSignHint", { text = "󰌵", texthl = "DiagnosticSignHint" })
-      vim.g.loaded_netrw = 1
-      vim.g.loaded_netrwPlugin = 1
+
+      --vim.g.loaded_netrw = 1
+      --vim.g.loaded_netrwPlugin = 1
 
       require("neo-tree").setup({
         close_if_last_window = false, -- Close Neo-tree if it is the last window left in the tab

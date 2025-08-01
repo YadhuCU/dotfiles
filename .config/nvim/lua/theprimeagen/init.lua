@@ -20,6 +20,25 @@ local ThePrimeagenGroup = augroup('ThePrimeagen', {})
 local autocmd = vim.api.nvim_create_autocmd
 local yank_group = augroup('HighlightYank', {})
 
+function ReplaceWithIncreament(from, to, counter)
+  local bufnr = vim.api.nvim_get_current_buf()
+  local start_line = vim.fn.line("'<")
+  local end_line = vim.fn.line("'>")
+
+  for lnum = start_line, end_line do
+    local line = vim.api.nvim_buf_get_lines(bufnr, lnum - 1, lnum, false)[1]
+    local new_line, count = line:gsub(from, function()
+      local replacement = to .. counter
+      counter = counter + 1
+      return replacement
+    end)
+
+    if count > 0 then
+      vim.api.nvim_buf_set_lines(bufnr, lnum - 1, lnum, false, { new_line })
+    end
+  end
+end
+
 function R(name)
   require("plenary.reload").reload_module(name)
 end

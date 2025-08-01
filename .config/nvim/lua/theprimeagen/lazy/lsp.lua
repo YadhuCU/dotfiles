@@ -13,7 +13,7 @@ return {
     "saadparwaiz1/cmp_luasnip",
     "j-hui/fidget.nvim",
   },
-
+  -- event = { "BufReadPre", "BufNewFile" },
   config = function()
     require("conform").setup({
       formatters_by_ft = {
@@ -33,7 +33,6 @@ return {
       ensure_installed = {
         "lua_ls",
         "vtsls",
-        "ts_ls"
       },
       handlers = {
         function(server_name) -- default handler (optional)
