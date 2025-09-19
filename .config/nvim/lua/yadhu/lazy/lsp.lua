@@ -36,15 +36,14 @@ return {
       },
       handlers = {
         function(server_name) -- default handler (optional)
-          require("lspconfig")[server_name].setup {
+          vim.lsp[server_name].setup {
             capabilities = capabilities
           }
         end,
 
         zls = function()
-          local lspconfig = require("lspconfig")
-          lspconfig.zls.setup({
-            root_dir = lspconfig.util.root_pattern(".git", "build.zig", "zls.json"),
+          vim.lsp.zls.setup({
+            root_dir = vim.lsp.util.root_pattern(".git", "build.zig", "zls.json"),
             settings = {
               zls = {
                 enable_inlay_hints = true,
@@ -57,11 +56,11 @@ return {
           vim.g.zig_fmt_autosave = 0
         end,
         ["lua_ls"] = function()
-          local lspconfig = require("lspconfig")
-          lspconfig.lua_ls.setup {
+          vim.lsp.lua_ls.setup {
             capabilities = capabilities,
             settings = {
               Lua = {
+                --runtime = { version = "Lua 5.1" },
                 runtime = { version = "Lua 5.1" },
                 diagnostics = {
                   globals = { "bit", "vim", "it", "describe", "before_each", "after_each" },
@@ -72,8 +71,7 @@ return {
         end,
         ["ts_ls"] = function() end,
         ["vtsls"] = function()
-          local lspconfig = require("lspconfig")
-          lspconfig.vtsls.setup {
+          vim.lsp.vtsls.setup {
             capabilities = capabilities,
             filetypes = { "typescript", "typescriptreact", "javascript", "javascriptreact" }
           }
