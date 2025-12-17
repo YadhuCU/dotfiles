@@ -16,6 +16,7 @@ return {
   -- event = { "BufReadPre", "BufNewFile" },
   config = function()
     require("conform").setup({
+      autoformat = false,
       formatters_by_ft = {
       }
     })
@@ -33,48 +34,46 @@ return {
       ensure_installed = {
         "lua_ls",
         "vtsls",
+        "eslint"
       },
       handlers = {
-        function(server_name) -- default handler (optional)
-          vim.lsp[server_name].setup {
-            capabilities = capabilities
-          }
-        end,
-
-        zls = function()
-          vim.lsp.zls.setup({
-            root_dir = vim.lsp.util.root_pattern(".git", "build.zig", "zls.json"),
-            settings = {
-              zls = {
-                enable_inlay_hints = true,
-                enable_snippets = true,
-                warn_style = true,
-              },
-            },
-          })
-          vim.g.zig_fmt_parse_errors = 0
-          vim.g.zig_fmt_autosave = 0
-        end,
         ["lua_ls"] = function()
-          vim.lsp.lua_ls.setup {
+          vim.lsp.config("lua_ls", {
             capabilities = capabilities,
             settings = {
               Lua = {
-                --runtime = { version = "Lua 5.1" },
-                runtime = { version = "Lua 5.1" },
-                diagnostics = {
-                  globals = { "bit", "vim", "it", "describe", "before_each", "after_each" },
-                }
+                format = {
+                  enable = true,
+                  defaultConfig = {
+                    indent_style = "space",
+                    indent_size = "20",
+                  }
+                },
               }
             }
-          }
+          })
+          vim.lsp.enable({ "lua_ls"})
         end,
-        ["ts_ls"] = function() end,
         ["vtsls"] = function()
-          vim.lsp.vtsls.setup {
+          vim.lsp.config("vtsls", {
             capabilities = capabilities,
             filetypes = { "typescript", "typescriptreact", "javascript", "javascriptreact" }
-          }
+          })
+          vim.lsp.enable({ "vtsls" })
+        end,
+        ["jedi-language-server"] = function()
+          vim.lsp.config("jedi-language-server", {
+            capabilities = capabilities,
+            filetypes = { "py" }
+          })
+          vim.lsp.enable({"jedi-language-server"})
+        end,
+        ["tailwindcss"] = function()
+          vim.lsp.config("tailwindcss", {
+            capabilities = capabilities,
+            filetypes = { "typescript", "typescriptreact", "javascriptreact", "html", "css" }
+          })
+          vim.lsp.enable({"tailwindcss"})
         end,
       }
     })
@@ -105,7 +104,7 @@ return {
       -- update_in_insert = true,
       float = {
         focusable = false,
-        style = "minimal",
+        -- style = "minimal",
         border = "rounded",
         source = "always",
         header = "",

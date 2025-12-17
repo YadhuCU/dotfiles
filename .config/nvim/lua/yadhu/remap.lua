@@ -41,11 +41,6 @@ vim.keymap.set("n", "sv", ":vsplit<Return><C-w>w")
 vim.keymap.set("n", "]a", ":cnext<CR>")
 vim.keymap.set("n", "[a", ":cprev<CR>")
 
--- vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
--- vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
--- vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
--- vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
-
 -- multiple line search
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
@@ -53,6 +48,10 @@ vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 -- add Empty line
 vim.keymap.set("n", "[<Space>", "mzO<C-c>`z")
 vim.keymap.set("n", "]<Space>", "mzo<C-c>`z")
+
+-- Tab
+vim.keymap.set("n", "<Tab>", "<cmd>tabnext<CR>")
+vim.keymap.set("n", "<S-Tab>", "<cmd>tabprevious<CR>")
 
 --[[
 -- TODO: change by requirement;
@@ -75,14 +74,6 @@ vim.keymap.set(
 
 -- vim.keymap.set("n", "<leader>vpp", "<cmd>e ~/.dotfiles/nvim/.config/nvim/lua/theprimeagen/packer.lua<CR>");
 vim.keymap.set("n", "<leader>mr", "<cmd>CellularAutomaton make_it_rain<CR>");
-
---Don't know what about this.
---[[
-vim.keymap.set("n", "<leader><leader>", function()
-    vim.cmd("so")
-end)
-]] --
-
 
 -- copy to system clipbord
 --[[

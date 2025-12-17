@@ -1,27 +1,44 @@
 return {
-  "nvimtools/none-ls.nvim",
-  dependencies = { "nvim-lua/plenary.nvim", "williamboman/mason.nvim", "jay-babu/mason-null-ls.nvim" },
-  config = function()
-    local null_ls = require("null-ls")
-    local mason_null_ls = require("mason-null-ls")
+	{
+		"stevearc/conform.nvim",
+		dependencies = {
+			"j-hui/fidget.nvim",
+		},
+		config = function()
+			local fidget = require("fidget")
 
-    mason_null_ls.setup({
-      ensure_installed = { "black", "isort" },
-      automatic_setup = true,
-    })
-
-    -- Setup Prettier with null-ls
-    null_ls.setup({
-      sources = {
-        null_ls.builtins.formatting.prettier,
-        null_ls.builtins.formatting.black,
-        null_ls.builtins.formatting.isort,
-      }
-    })
-
-    -- Use vim.lsp.buf.format() to trigger Prettier formatting
-    vim.keymap.set("n", "<leader>f", function()
-      vim.lsp.buf.format({ async = true })
-    end, { silent = true })
-  end
+			require("conform").setup({
+        --[[
+				format_on_save = {
+					timeout_ms = 500,
+					lsp_format = "fallback",
+				},
+        ]]--
+        autoformat = false,
+				formatters_by_ft = {
+					lua = { "stylua" },
+					python = { "isort", "black" },
+					javascript = { "prettier", lsp_format = "fallback" },
+					javascriptreact = { "prettier", lsp_format = "fallback" },
+					typescript = { "prettier", lsp_format = "fallback" },
+					typescriptreact = { "prettier", lsp_format = "fallback" },
+				},
+			})
+			-- Use vim.lsp.buf.format() to trigger Prettier formatting
+			vim.keymap.set("n", "<leader>f", function()
+				local task = fidget.progress.handle.create({
+					title = "Formatting",
+					message = "Running conform...",
+					lsp_client = { name = "conform.nvim" },
+				})
+				require("conform").format({
+					bufnr = 0,
+					async = true,
+					lsp_fallback = true,
+				}, function()
+					task:finish({ message = "Done!" })
+				end)
+			end, { silent = true })
+		end,
+	},
 }

@@ -414,64 +414,8 @@ return {
         },
       })
 
+      vim.keymap.set("n", "<leader>E", "<Cmd>Neotree toggle<CR>")
       vim.keymap.set("n", "<leader>e", "<Cmd>Neotree reveal<CR>")
     end,
   },
 }
---[[
-return {
-  "nvim-tree/nvim-tree.lua",
-  version = "*",
-  lazy = false,
-  dependencies = {
-    "nvim-tree/nvim-web-devicons",
-  },
-  config = function()
-    -- disabling netrw
-    vim.g.loaded_netrw = 1
-    vim.g.loaded_netrwPlugin = 1
-
-    require("nvim-tree").setup({
-      sort = {
-        sorter = "case_sensitive",
-      },
-      view = {
-        width = 30,
-      },
-      renderer = {
-        group_empty = true,
-        highlight_git = true,
-        icons = {
-          show = {
-            git = true,
-          }
-        }
-      },
-      filters = {
-        dotfiles = true,
-      }
-    })
-
-    local api = require("nvim-tree.api")
-
-    vim.keymap.set("n", "<leader>e", function()
-      api.tree.toggle()
-    end, { noremap = true, silent = true })
-
-    vim.keymap.set("n", "<leader>w", function()
-      -- local current_buf = vim.api.nvim_get_current_buf()
-      -- local current_ft = vim.bo.filetype
-      --
-      -- if current_ft == "NvimTree" then
-      --   if prev_buf and vim.api.nvim_buf_is_valid(prev_buf) then
-      --     vim.api.nvim_set_current_buf(prev_buf)
-      --   end
-      -- else
-      --   prev_buf = current_buf
-      --   api.tree.open()
-      -- end
-      api.tree.open()
-    end, { noremap = true, silent = true })
-  end
-}
-]] --
