@@ -12,11 +12,8 @@ return {
     require('telescope').setup({})
 
     local builtin = require('telescope.builtin')
-    -- vim.keymap.set('n', '<leader>pf', builtin.find_files, {})
-    vim.keymap.set('n', '<leader><space>', builtin.find_files, {})
-
-    -- vim.keymap.set('n', '<C-p>', builtin.git_files, {})
-    vim.keymap.set('n', '<C-p>', builtin.git_files, {})
+    vim.keymap.set('n', '<leader><space>', builtin.find_files, { desc = "Telescop find files"})
+    vim.keymap.set('n', '<C-p>', builtin.git_files, { desc = "Telescop git files"})
 
     --[[
     vim.keymap.set('n', '<leader>pws', function()
@@ -24,12 +21,7 @@ return {
         builtin.grep_string({ search = word })
     end)
     ]] --
-    vim.keymap.set('n', '<leader>/', function()
-      --[[local word = vim.fn.expand("<cword>")
-      builtin.grep_string({ search = word })
-      --]]
-      builtin.live_grep()
-    end)
+    vim.keymap.set('n', '<leader>/', builtin.live_grep, { desc = "Telescop live grep"} )
 
     --[[
     vim.keymap.set('n', '<leader>pWs', function()
@@ -41,5 +33,6 @@ return {
     end)
     ]]--
     vim.keymap.set('n', '<leader>vh', builtin.help_tags, {})
+    require "lua.yadhu.lazy.telescope.multigrep".setup()
   end
 }

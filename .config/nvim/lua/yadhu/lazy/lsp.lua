@@ -34,7 +34,9 @@ return {
       ensure_installed = {
         "lua_ls",
         "vtsls",
-        "eslint"
+        "eslint",
+        "gopls",
+        "tailwindcss",
       },
       handlers = {
         ["lua_ls"] = function()
@@ -67,6 +69,13 @@ return {
             filetypes = { "py" }
           })
           vim.lsp.enable({"jedi-language-server"})
+        end,
+        ["gopls"] = function()
+          vim.lsp.config("gopls", {
+            capabilities = capabilities,
+            filetypes = { "go" }
+          })
+          vim.lsp.enable({"gopls"})
         end,
         ["tailwindcss"] = function()
           vim.lsp.config("tailwindcss", {
