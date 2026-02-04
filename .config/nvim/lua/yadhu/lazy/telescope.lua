@@ -33,6 +33,6 @@ return {
     end)
     ]]--
     vim.keymap.set('n', '<leader>vh', builtin.help_tags, {})
-    require "lua.yadhu.lazy.telescope.multigrep".setup()
+    require "yadhu.lazy.telescope.multigrep".setup()
   end
 }
